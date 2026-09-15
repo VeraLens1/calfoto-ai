@@ -149,12 +149,35 @@ nav a[aria-current="page"] {
   margin-bottom: 22px;
 }
 
+.contact-card,
 .contact-form {
   display: block;
   background: var(--card);
   border-radius: 24px;
   padding: 28px 24px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 28px rgba(0, 0, 0, 0.05);
+}
+
+.contact-card-label {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 650;
+  color: var(--muted);
+}
+
+.contact-email {
+  display: block;
+  margin: 0 0 20px;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: var(--text);
+  word-break: break-word;
+}
+
+.contact-email:hover {
+  color: var(--link);
+  text-decoration: none;
 }
 
 .contact-grid {
@@ -257,10 +280,11 @@ nav a[aria-current="page"] {
   background-image: none;
 }
 
+a.contact-submit,
 .contact-submit {
   display: block;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 0;
   border: 0;
   border-radius: 16px;
   padding: 15px 18px;
@@ -271,11 +295,17 @@ nav a[aria-current="page"] {
   font-weight: 700;
   letter-spacing: -0.2px;
   cursor: pointer;
+  text-align: center;
+  text-decoration: none;
   transition: transform 0.12s ease, opacity 0.12s ease;
+  box-sizing: border-box;
 }
 
+a.contact-submit:hover,
 .contact-submit:hover {
   opacity: 0.92;
+  text-decoration: none;
+  color: #fff;
 }
 
 .contact-submit:active {
@@ -336,5 +366,6 @@ nav a[aria-current="page"] {
 @media (max-width: 560px) {
   h1, .hero h1 { font-size: 28px; }
   .site-header { align-items: flex-start; flex-direction: column; }
+  .contact-card,
   .contact-form { padding: 22px 18px; }
 }

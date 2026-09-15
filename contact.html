@@ -3,12 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
     <title>Contact — CalFoto AI</title>
     <meta
       name="description"
       content="Contact VeraLens about CalFoto AI: support, account, privacy, or billing questions."
     />
-    <link rel="stylesheet" href="./styles.css?v=4" />
+    <link rel="stylesheet" href="./styles.css?v=5" />
   </head>
   <body>
     <div class="wrap">
@@ -25,64 +27,17 @@
     <main class="wrap contact-page">
       <section class="contact-intro">
         <h1>Contact</h1>
-        <p class="lede">
-          Fill in the form and your email app will open with the message ready to send. Or email
-          <a href="mailto:contact.veralens@gmail.com">contact.veralens@gmail.com</a> directly.
-        </p>
+        <p class="lede">We usually reply within a few business days.</p>
       </section>
 
-      <p id="sent-banner" class="sent-banner" hidden>
-        Your email app should open with the message ready. Press Send there to contact us.
-        If nothing opened, email
-        <a href="mailto:contact.veralens@gmail.com">contact.veralens@gmail.com</a>
-        or use the button below to copy the message.
-      </p>
-
-      <form class="contact-form" id="contact-form" novalidate>
-        <div class="contact-grid">
-          <div class="field">
-            <label for="name">Name</label>
-            <input id="name" name="name" type="text" autocomplete="name" required maxlength="120" placeholder="Your name" />
-          </div>
-
-          <div class="field">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" autocomplete="email" required maxlength="200" placeholder="you@email.com" />
-          </div>
-
-          <div class="field field-full">
-            <label for="topic">Topic</label>
-            <div class="select-wrap">
-              <select id="topic" name="topic" required>
-                <option value="" disabled selected>Select a topic</option>
-                <option value="Support">Support / app issue</option>
-                <option value="Account">Account or data deletion</option>
-                <option value="Billing">Subscription / billing</option>
-                <option value="Privacy">Privacy</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="field field-full">
-            <label for="message">Message</label>
-            <textarea
-              id="message"
-              name="message"
-              rows="7"
-              required
-              maxlength="4000"
-              placeholder="Include your account email if you have one."
-            ></textarea>
-          </div>
-        </div>
-
-        <button type="submit" class="contact-submit">Send message</button>
-        <button type="button" id="copy-btn" class="contact-secondary" hidden>Copy message</button>
-        <p class="form-note">
-          By sending, you agree we may use your email only to reply to this request.
-        </p>
-      </form>
+      <div class="contact-card">
+        <p class="contact-card-label">Email us</p>
+        <a class="contact-email" href="mailto:contact.veralens@gmail.com">contact.veralens@gmail.com</a>
+        <a class="contact-submit" href="mailto:contact.veralens@gmail.com?subject=CalFoto%20AI%20support">
+          Open email app
+        </a>
+        <p class="form-note">No third-party form services. Just email.</p>
+      </div>
     </main>
     <footer class="site-footer">
       <div class="wrap">
@@ -90,70 +45,5 @@
         <p><a href="mailto:contact.veralens@gmail.com">contact.veralens@gmail.com</a></p>
       </div>
     </footer>
-    <script>
-      (function () {
-        var TO = "contact.veralens@gmail.com";
-        var form = document.getElementById("contact-form");
-        var banner = document.getElementById("sent-banner");
-        var copyBtn = document.getElementById("copy-btn");
-        var lastBody = "";
-
-        function field(id) {
-          return document.getElementById(id);
-        }
-
-        function build() {
-          var name = field("name").value.trim();
-          var email = field("email").value.trim();
-          var topic = field("topic").value;
-          var message = field("message").value.trim();
-          var subject = "CalFoto AI — " + topic;
-          var body =
-            "Name: " + name + "\n" +
-            "Email: " + email + "\n" +
-            "Topic: " + topic + "\n\n" +
-            message;
-          return { name: name, email: email, topic: topic, message: message, subject: subject, body: body };
-        }
-
-        function validEmail(value) {
-          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-        }
-
-        form.addEventListener("submit", function (event) {
-          event.preventDefault();
-          var data = build();
-          if (!data.name || !data.email || !data.topic || !data.message) {
-            form.reportValidity();
-            return;
-          }
-          if (!validEmail(data.email)) {
-            field("email").focus();
-            field("email").reportValidity();
-            return;
-          }
-
-          lastBody = "To: " + TO + "\nSubject: " + data.subject + "\n\n" + data.body;
-          var url =
-            "mailto:" + encodeURIComponent(TO) +
-            "?subject=" + encodeURIComponent(data.subject) +
-            "&body=" + encodeURIComponent(data.body);
-
-          banner.hidden = false;
-          copyBtn.hidden = false;
-          window.location.href = url;
-        });
-
-        copyBtn.addEventListener("click", function () {
-          if (!lastBody) lastBody = build().body;
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(lastBody).then(function () {
-              copyBtn.textContent = "Copied";
-              setTimeout(function () { copyBtn.textContent = "Copy message"; }, 1600);
-            });
-          }
-        });
-      })();
-    </script>
   </body>
 </html>
