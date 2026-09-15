@@ -308,6 +308,15 @@ a.contact-submit:hover,
   color: #fff;
 }
 
+.contact-submit:disabled {
+  opacity: 1;
+  cursor: default;
+}
+
+.contact-submit.is-sent {
+  background: #1b7a45;
+}
+
 .contact-submit:active {
   transform: scale(0.985);
 }
