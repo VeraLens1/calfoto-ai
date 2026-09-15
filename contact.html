@@ -9,7 +9,7 @@
       name="description"
       content="Contact VeraLens about CalFoto AI: support, account, privacy, or billing questions."
     />
-    <link rel="stylesheet" href="./styles.css?v=6" />
+    <link rel="stylesheet" href="./styles.css?v=7" />
   </head>
   <body>
     <div class="wrap">
@@ -73,7 +73,7 @@
           </div>
         </div>
 
-        <button type="submit" class="contact-submit" id="submit-btn">Send message</button>
+        <button type="submit" class="contact-submit" id="submit-btn">Send</button>
         <p class="form-note">Your message is delivered to VeraLens by email. No activation step.</p>
       </form>
     </main>
@@ -90,6 +90,12 @@
         var sent = document.getElementById("sent-banner");
         var err = document.getElementById("error-banner");
         var btn = document.getElementById("submit-btn");
+
+        function setButton(label, disabled) {
+          btn.textContent = label;
+          btn.disabled = !!disabled;
+          btn.classList.toggle("is-sent", label === "Sent");
+        }
 
         form.addEventListener("submit", function (event) {
           event.preventDefault();
@@ -109,8 +115,7 @@
             return;
           }
 
-          btn.disabled = true;
-          btn.textContent = "Sending…";
+          setButton("Sending…", true);
 
           fetch(ENDPOINT, {
             method: "POST",
@@ -119,21 +124,22 @@
           })
             .then(function (res) {
               return res.json().then(function (data) {
-                return { ok: res.ok && data && data.ok, data: data, status: res.status };
+                return { ok: res.ok && data && data.ok, data: data };
+              }).catch(function () {
+                return { ok: false, data: null };
               });
             })
             .then(function (result) {
               if (!result.ok) {
                 throw new Error((result.data && result.data.error) || "Could not send message.");
               }
-              form.hidden = true;
               sent.hidden = false;
+              setButton("Sent", true);
             })
             .catch(function (error) {
               err.textContent = error.message || "Could not send message.";
               err.hidden = false;
-              btn.disabled = false;
-              btn.textContent = "Send message";
+              setButton("Send", false);
             });
         });
       })();
