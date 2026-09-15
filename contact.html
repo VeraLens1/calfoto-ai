@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact — CalFoto AI</title>
+    <meta
+      name="description"
+      content="Contact VeraLens about CalFoto AI: support, account, privacy, or billing questions."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="site-header">
+        <a class="brand" href="./">CalFoto AI</a>
+        <nav>
+          <a href="./terms.html">Terms</a>
+          <a href="./privacy.html">Privacy</a>
+          <a href="./support.html">Support</a>
+          <a href="./contact.html" aria-current="page">Contact</a>
+        </nav>
+      </header>
+    </div>
+    <main class="wrap">
+      <h1>Contact</h1>
+      <p class="lede">
+        Send a message and we usually reply within a few business days. You can also email
+        <a href="mailto:contact.veralens@gmail.com">contact.veralens@gmail.com</a> directly.
+      </p>
+
+      <form
+        class="contact-form"
+        action="https://formsubmit.co/contact.veralens@gmail.com"
+        method="POST"
+      >
+        <input type="hidden" name="_subject" value="CalFoto AI — Contact form" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_next" value="https://veralens1.github.io/calfoto-ai/contact.html?sent=1" />
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" autocomplete="name" required maxlength="120" />
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" required maxlength="200" />
+
+        <label for="topic">Topic</label>
+        <select id="topic" name="topic" required>
+          <option value="" disabled selected>Select a topic</option>
+          <option value="Support">Support / app issue</option>
+          <option value="Account">Account or data deletion</option>
+          <option value="Billing">Subscription / billing</option>
+          <option value="Privacy">Privacy</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <label for="message">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          rows="6"
+          required
+          maxlength="4000"
+          placeholder="Include your account email if you have one."
+        ></textarea>
+
+        <button type="submit">Send message</button>
+        <p class="form-note">
+          By sending, you agree we may use your email only to reply to this request.
+        </p>
+      </form>
+
+      <p id="sent-banner" class="sent-banner" hidden>
+        Thanks — your message was sent. We will get back to you soon.
+      </p>
+    </main>
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>VeraLens · CalFoto AI</p>
+        <p><a href="mailto:contact.veralens@gmail.com">contact.veralens@gmail.com</a></p>
+      </div>
+    </footer>
+    <script>
+      (function () {
+        if (new URLSearchParams(location.search).get("sent") === "1") {
+          var banner = document.getElementById("sent-banner");
+          var form = document.querySelector(".contact-form");
+          if (banner) banner.hidden = false;
+          if (form) form.hidden = true;
+        }
+      })();
+    </script>
+  </body>
+</html>
