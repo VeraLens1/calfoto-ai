@@ -282,6 +282,25 @@ nav a[aria-current="page"] {
   transform: scale(0.985);
 }
 
+.contact-secondary {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 14px 18px;
+  background: #fff;
+  color: var(--text);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.contact-secondary:hover {
+  background: #fafafa;
+}
+
 .form-note {
   margin: 14px 0 0;
   font-size: 13px;
@@ -306,6 +325,12 @@ nav a[aria-current="page"] {
   padding: 16px 18px;
   font-weight: 600;
   margin: 0 0 18px;
+  line-height: 1.45;
+}
+
+.sent-banner a {
+  color: #1b7a45;
+  text-decoration: underline;
 }
 
 @media (max-width: 560px) {

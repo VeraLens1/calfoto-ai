@@ -8,7 +8,7 @@
       name="description"
       content="Contact VeraLens about CalFoto AI: support, account, privacy, or billing questions."
     />
-    <link rel="stylesheet" href="./styles.css?v=3" />
+    <link rel="stylesheet" href="./styles.css?v=4" />
   </head>
   <body>
     <div class="wrap">
@@ -26,30 +26,19 @@
       <section class="contact-intro">
         <h1>Contact</h1>
         <p class="lede">
-          Send a message and we usually reply within a few business days. You can also email
+          Fill in the form and your email app will open with the message ready to send. Or email
           <a href="mailto:contact.veralens@gmail.com">contact.veralens@gmail.com</a> directly.
         </p>
       </section>
 
       <p id="sent-banner" class="sent-banner" hidden>
-        Thanks — your message was sent. We will get back to you soon.
+        Your email app should open with the message ready. Press Send there to contact us.
+        If nothing opened, email
+        <a href="mailto:contact.veralens@gmail.com">contact.veralens@gmail.com</a>
+        or use the button below to copy the message.
       </p>
 
-      <form
-        class="contact-form"
-        action="https://formsubmit.co/contact.veralens@gmail.com"
-        method="POST"
-      >
-        <input type="hidden" name="_subject" value="CalFoto AI — Contact form" />
-        <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="_captcha" value="false" />
-        <input
-          type="hidden"
-          name="_next"
-          value="https://veralens1.github.io/calfoto-ai/contact.html?sent=1"
-        />
-        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
-
+      <form class="contact-form" id="contact-form" novalidate>
         <div class="contact-grid">
           <div class="field">
             <label for="name">Name</label>
@@ -89,6 +78,7 @@
         </div>
 
         <button type="submit" class="contact-submit">Send message</button>
+        <button type="button" id="copy-btn" class="contact-secondary" hidden>Copy message</button>
         <p class="form-note">
           By sending, you agree we may use your email only to reply to this request.
         </p>
@@ -102,12 +92,67 @@
     </footer>
     <script>
       (function () {
-        if (new URLSearchParams(location.search).get("sent") === "1") {
-          var banner = document.getElementById("sent-banner");
-          var form = document.querySelector(".contact-form");
-          if (banner) banner.hidden = false;
-          if (form) form.hidden = true;
+        var TO = "contact.veralens@gmail.com";
+        var form = document.getElementById("contact-form");
+        var banner = document.getElementById("sent-banner");
+        var copyBtn = document.getElementById("copy-btn");
+        var lastBody = "";
+
+        function field(id) {
+          return document.getElementById(id);
         }
+
+        function build() {
+          var name = field("name").value.trim();
+          var email = field("email").value.trim();
+          var topic = field("topic").value;
+          var message = field("message").value.trim();
+          var subject = "CalFoto AI — " + topic;
+          var body =
+            "Name: " + name + "\n" +
+            "Email: " + email + "\n" +
+            "Topic: " + topic + "\n\n" +
+            message;
+          return { name: name, email: email, topic: topic, message: message, subject: subject, body: body };
+        }
+
+        function validEmail(value) {
+          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+        }
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          var data = build();
+          if (!data.name || !data.email || !data.topic || !data.message) {
+            form.reportValidity();
+            return;
+          }
+          if (!validEmail(data.email)) {
+            field("email").focus();
+            field("email").reportValidity();
+            return;
+          }
+
+          lastBody = "To: " + TO + "\nSubject: " + data.subject + "\n\n" + data.body;
+          var url =
+            "mailto:" + encodeURIComponent(TO) +
+            "?subject=" + encodeURIComponent(data.subject) +
+            "&body=" + encodeURIComponent(data.body);
+
+          banner.hidden = false;
+          copyBtn.hidden = false;
+          window.location.href = url;
+        });
+
+        copyBtn.addEventListener("click", function () {
+          if (!lastBody) lastBody = build().body;
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(lastBody).then(function () {
+              copyBtn.textContent = "Copied";
+              setTimeout(function () { copyBtn.textContent = "Copy message"; }, 1600);
+            });
+          }
+        });
       })();
     </script>
   </body>
