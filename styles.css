@@ -363,6 +363,16 @@ a.contact-submit:hover,
   text-decoration: underline;
 }
 
+.error-banner {
+  background: #ffecec;
+  color: #b42318;
+  border-radius: 16px;
+  padding: 16px 18px;
+  font-weight: 600;
+  margin: 0 0 18px;
+  line-height: 1.45;
+}
+
 @media (max-width: 560px) {
   h1, .hero h1 { font-size: 28px; }
   .site-header { align-items: flex-start; flex-direction: column; }

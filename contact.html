@@ -4,13 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
     <title>Contact — CalFoto AI</title>
     <meta
       name="description"
       content="Contact VeraLens about CalFoto AI: support, account, privacy, or billing questions."
     />
-    <link rel="stylesheet" href="./styles.css?v=5" />
+    <link rel="stylesheet" href="./styles.css?v=6" />
   </head>
   <body>
     <div class="wrap">
@@ -27,17 +26,56 @@
     <main class="wrap contact-page">
       <section class="contact-intro">
         <h1>Contact</h1>
-        <p class="lede">We usually reply within a few business days.</p>
+        <p class="lede">
+          Send a message and we usually reply within a few business days. Or email
+          <a href="mailto:contact.veralens@gmail.com">contact.veralens@gmail.com</a>.
+        </p>
       </section>
 
-      <div class="contact-card">
-        <p class="contact-card-label">Email us</p>
-        <a class="contact-email" href="mailto:contact.veralens@gmail.com">contact.veralens@gmail.com</a>
-        <a class="contact-submit" href="mailto:contact.veralens@gmail.com?subject=CalFoto%20AI%20support">
-          Open email app
-        </a>
-        <p class="form-note">No third-party form services. Just email.</p>
-      </div>
+      <p id="sent-banner" class="sent-banner" hidden>Thanks — your message was sent.</p>
+      <p id="error-banner" class="error-banner" hidden></p>
+
+      <form class="contact-form" id="contact-form">
+        <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+        <div class="contact-grid">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required maxlength="120" placeholder="Your name" />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required maxlength="200" placeholder="you@email.com" />
+          </div>
+          <div class="field field-full">
+            <label for="topic">Topic</label>
+            <div class="select-wrap">
+              <select id="topic" name="topic" required>
+                <option value="" disabled selected>Select a topic</option>
+                <option value="Support">Support / app issue</option>
+                <option value="Account">Account or data deletion</option>
+                <option value="Billing">Subscription / billing</option>
+                <option value="Privacy">Privacy</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="field field-full">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="7"
+              required
+              maxlength="4000"
+              placeholder="Include your account email if you have one."
+            ></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="contact-submit" id="submit-btn">Send message</button>
+        <p class="form-note">Sent directly to VeraLens. No FormSubmit / no activation email.</p>
+      </form>
     </main>
     <footer class="site-footer">
       <div class="wrap">
@@ -45,5 +83,60 @@
         <p><a href="mailto:contact.veralens@gmail.com">contact.veralens@gmail.com</a></p>
       </div>
     </footer>
+    <script>
+      (function () {
+        var ENDPOINT = "https://food-recognition-proxy.farfuria-proxy.workers.dev/contact";
+        var form = document.getElementById("contact-form");
+        var sent = document.getElementById("sent-banner");
+        var err = document.getElementById("error-banner");
+        var btn = document.getElementById("submit-btn");
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          err.hidden = true;
+          sent.hidden = true;
+
+          var payload = {
+            name: document.getElementById("name").value.trim(),
+            email: document.getElementById("email").value.trim(),
+            topic: document.getElementById("topic").value,
+            message: document.getElementById("message").value.trim(),
+            website: form.querySelector('[name="website"]').value
+          };
+
+          if (!payload.name || !payload.email || !payload.topic || !payload.message) {
+            form.reportValidity();
+            return;
+          }
+
+          btn.disabled = true;
+          btn.textContent = "Sending…";
+
+          fetch(ENDPOINT, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          })
+            .then(function (res) {
+              return res.json().then(function (data) {
+                return { ok: res.ok && data && data.ok, data: data, status: res.status };
+              });
+            })
+            .then(function (result) {
+              if (!result.ok) {
+                throw new Error((result.data && result.data.error) || "Could not send message.");
+              }
+              form.hidden = true;
+              sent.hidden = false;
+            })
+            .catch(function (error) {
+              err.textContent = error.message || "Could not send message.";
+              err.hidden = false;
+              btn.disabled = false;
+              btn.textContent = "Send message";
+            });
+        });
+      })();
+    </script>
   </body>
 </html>
