@@ -18,7 +18,6 @@
           <a href="./terms.html">Terms</a>
           <a href="./privacy.html">Privacy</a>
           <a href="./support.html">Support</a>
-          <a href="./contact.html">Contact</a>
         </nav>
       </header>
     </div>
@@ -72,12 +71,12 @@
 
       <h2>5. AI analysis and photos</h2>
       <p>
-        When you scan a meal, the photo is sent once to cloud AI services to estimate foods and
-        nutrients. We do not keep a copy of the photo on our servers or in the database. After
-        analysis, the image remains only on your phone. We do not keep it in our cloud. On the device
-        it is kept for up to 90 days or until you delete the meal, the app, or the device data
-        (whichever comes first). A size limit may remove older photos first. Do not upload images of
-        other people without a basis, or prohibited content.
+        When you scan a meal, the photo is sent once to Google Gemini and Groq (via Cloudflare
+        Workers) to estimate foods and nutrients. We do not keep a copy of the photo on our servers
+        or in the CalFoto database. After analysis, the image remains only on your phone. We do not
+        keep it in our cloud. On the device it is kept for up to 90 days or until you delete the
+        meal, the app, or the device data (whichever comes first). A size limit may remove older
+        photos first. Do not upload images of other people without a basis, or prohibited content.
       </p>
       <p>
         We do not sell your photos. Nutrition results (calories, macros, food names) may sync with
@@ -87,9 +86,10 @@
       <h2>6. Who we share with</h2>
       <p>We do not sell personal data.</p>
       <p>
-        Processors: cloud infrastructure and database (Supabase), AI providers for food recognition,
-        Apple/Google for sign-in and payments, RevenueCat for subscription status where used.
-        Apple Health data stays on device for sync and is not used for advertising.
+        Processors: cloud infrastructure and database (Supabase); Google Gemini and Groq for
+        food-image analysis (via Cloudflare Workers); Apple/Google for sign-in and payments;
+        RevenueCat for subscription status where used. Apple Health data stays on device for sync
+        and is not used for advertising.
       </p>
       <p>
         Apple and Google receive payment data and, at Sign in, the identity data you choose to share.
