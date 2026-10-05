@@ -382,6 +382,49 @@ a.contact-submit:hover,
   line-height: 1.45;
 }
 
+.status-pill {
+  display: inline-block;
+  margin: 0 0 14px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #eef4ff;
+  color: #0a4fad;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.waitlist-form {
+  margin-top: 16px;
+}
+
+.optional {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.consent {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  color: var(--body);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.consent input {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  flex: 0 0 auto;
+  accent-color: #1c1c1e;
+}
+
+.contact-submit.is-waiting:disabled {
+  opacity: 0.45;
+  cursor: wait;
+}
+
 @media (max-width: 720px) {
   h1, .hero h1 { font-size: 28px; }
   .site-header {

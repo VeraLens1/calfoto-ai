@@ -3,12 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CalFoto AI — Terms, Privacy &amp; Contact</title>
+    <title>CalFoto AI</title>
     <meta
       name="description"
-      content="Official Terms, Privacy Policy, Support, and Contact for CalFoto AI, operated by VeraLens."
+      content="CalFoto AI waiting list, plus the official Terms, Privacy Policy, Support, and Contact pages."
     />
-    <link rel="stylesheet" href="./styles.css?v=8" />
+    <link rel="stylesheet" href="./styles.css?v=9" />
+    <script>
+      (function () {
+        var lang = (navigator.languages && navigator.languages[0]) || navigator.language || "en";
+        var dest = String(lang).toLowerCase().indexOf("ro") === 0 ? "./ro/" : "./en/";
+        location.replace(dest + location.search + location.hash);
+      })();
+    </script>
   </head>
   <body>
     <div class="wrap">
@@ -25,6 +32,11 @@
     <main class="wrap">
       <section class="hero">
         <h1>CalFoto AI</h1>
+        <p>
+          <a href="./ro/">Română</a>
+          ·
+          <a href="./en/">English</a>
+        </p>
         <p>
           Track food, calories, workouts, and progress from photos. Operated by VeraLens.
           These pages are the official legal documents for App Store and Google Play.

@@ -1,0 +1,13 @@
+name: Keep Supabase awake
+
+on:
+  schedule:
+    - cron: "0 9 * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Touch the waitlist database
+        run: curl -fsS "https://gvbykuwbxspjzuprzjgf.supabase.co/functions/v1/join-waitlist"
