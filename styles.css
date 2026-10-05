@@ -652,91 +652,19 @@ a.contact-submit:hover,
 
 .phone {
   justify-self: end;
-  width: min(320px, 100%);
-  padding: 12px;
+  width: min(300px, 100%);
+  padding: 10px;
   border-radius: 36px;
   background: #1c1c1c;
   box-shadow: 0 30px 70px rgba(40, 30, 10, 0.16);
 }
 
-.phone-screen {
-  background: #f7f4ee;
-  border-radius: 28px;
-  padding: 18px 16px 16px;
-  min-height: 460px;
-}
-
-.phone-top {
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-  font-weight: 700;
-  color: #8a847b;
-}
-
-.phone-hello {
-  margin: 22px 0 4px;
-  font-size: 13px;
-  font-weight: 650;
-  color: #8a847b;
-}
-
-.phone-kcal {
-  margin: 0;
-  font-size: 42px;
-  letter-spacing: -1.4px;
-  font-weight: 760;
-  line-height: 1;
-}
-
-.phone-kcal span {
-  margin-left: 4px;
-  font-size: 16px;
-  letter-spacing: 0;
-  color: #8a847b;
-}
-
-.phone-macros {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  margin: 16px 0;
-}
-
-.phone-macros div {
-  background: #fff;
-  border-radius: 14px;
-  padding: 10px 8px;
-}
-
-.phone-macros b { display: block; font-size: 16px; }
-.phone-macros span { color: #8a847b; font-size: 12px; font-weight: 650; }
-
-.meal {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  background: #fff;
-  border-radius: 16px;
-  padding: 12px;
-  margin-top: 8px;
-}
-
-.meal i {
-  width: 36px;
-  height: 36px;
-  border-radius: 12px;
+.phone img {
   display: block;
-  flex: 0 0 auto;
+  width: 100%;
+  height: auto;
+  border-radius: 28px;
 }
-
-.meal i.a { background: #f3d2a4; }
-.meal i.b { background: #d7e7c8; }
-.meal i.c { background: #f6e3a1; }
-
-.meal b, .meal span { display: block; }
-.meal b { font-size: 14px; }
-.meal span { color: #8a847b; font-size: 12px; font-weight: 600; }
 
 .land-points {
   width: min(1120px, calc(100% - 40px));
