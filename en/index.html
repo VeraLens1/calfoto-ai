@@ -6,93 +6,112 @@
     <title>CalFoto AI — waiting list</title>
     <meta
       name="description"
-      content="Join the list to hear when CalFoto AI is available on the App Store and Google Play. The announcement is sent in English."
+      content="Photograph your plate and see the calories. Join the list for CalFoto AI on the App Store and Google Play."
     />
     <link rel="canonical" href="https://veralens1.github.io/calfoto-ai/en/" />
     <link rel="alternate" hreflang="en" href="https://veralens1.github.io/calfoto-ai/en/" />
     <link rel="alternate" hreflang="ro" href="https://veralens1.github.io/calfoto-ai/ro/" />
-    <link rel="stylesheet" href="../styles.css?v=9" />
+    <link rel="stylesheet" href="../styles.css?v=11" />
   </head>
-  <body>
-    <div class="wrap">
-      <header class="site-header">
-        <a class="brand" href="./">CalFoto AI</a>
-        <nav>
-          <a href="../terms.html">Terms</a>
-          <a href="../privacy.html">Privacy</a>
-          <a href="../support.html">Support</a>
-          <a href="../contact.html">Contact</a>
-          <a href="../ro/" data-lang-switch hreflang="ro">RO</a>
-        </nav>
-      </header>
-    </div>
-    <main class="wrap">
-      <section class="hero">
-        <p class="status-pill">In review on the App Store and Google Play</p>
-        <h1>CalFoto AI</h1>
-        <p>
-          Estimate calories from a photo. Track meals, workouts, and progress.
-          Joining does not create an app account.
-        </p>
-      </section>
-
-      <div class="cards">
-        <div class="card">
-          <strong>Photo</strong>
-          <span>Estimated calories from the plate.</span>
-        </div>
-        <div class="card">
-          <strong>Log</strong>
-          <span>Meals, water, and progress.</span>
-        </div>
-        <div class="card">
-          <strong>Movement</strong>
-          <span>Workouts next to what you ate.</span>
-        </div>
+  <body class="landing">
+    <header class="land-bar">
+      <a class="land-logo" href="./">CalFoto AI</a>
+      <div class="land-bar-actions">
+        <a class="land-lang" href="../ro/" data-lang-switch hreflang="ro">RO</a>
+        <a class="land-bar-btn" href="#join">Notify me</a>
       </div>
-
-      <form class="contact-form waitlist-form" data-waitlist data-locale="en" novalidate>
-        <div data-banner role="status" hidden></div>
-        <div class="contact-grid">
-          <div class="field">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" autocomplete="email" required maxlength="254" />
-          </div>
-          <div class="field">
-            <label for="first_name">First name <span class="optional">(optional)</span></label>
-            <input id="first_name" name="first_name" type="text" autocomplete="given-name" maxlength="80" />
-          </div>
-          <div class="field field-full">
-            <label class="consent">
+    </header>
+    <main>
+      <section class="land-hero">
+        <div class="land-copy">
+          <p class="land-eyebrow">In review on the App Store and Google Play</p>
+          <h1>Calories from the plate, from one photo.</h1>
+          <p class="land-lead">
+            Take a picture of the meal and see calories, protein, carbs, and fat.
+            Water, workouts, and progress stay in the same place.
+          </p>
+          <form id="join" class="land-form" data-waitlist data-locale="en" novalidate>
+            <div data-banner role="status" hidden></div>
+            <div class="land-join">
+              <label class="sr-only" for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="Your email" />
+              <button type="submit">Notify me</button>
+            </div>
+            <label class="land-name" for="first_name">
+              <span>First name <em>optional</em></span>
+              <input id="first_name" name="first_name" type="text" autocomplete="given-name" maxlength="80" />
+            </label>
+            <label class="land-consent">
               <input name="consent" type="checkbox" required />
               <span>
-                I agree to receive one launch announcement, in English, at this address.
+                I agree to receive one launch announcement, in English.
                 I have read the <a href="../privacy.html">Privacy Policy</a>.
               </span>
             </label>
-          </div>
-          <div class="field field-full">
-            <button class="contact-submit" type="submit">Notify me</button>
-            <p class="form-note">
-              One message, when the app is ready. To delete your address, email
-              <a href="mailto:contact.veralens@gmail.com">contact.veralens@gmail.com</a>.
-            </p>
+            <p class="land-note">Joining does not create an account. To delete your address, email contact.veralens@gmail.com.</p>
+            <div class="hp" aria-hidden="true">
+              <label for="website">Website</label>
+              <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+            </div>
+            <input name="source" type="hidden" value="" />
+          </form>
+        </div>
+        <div class="phone" aria-hidden="true">
+          <div class="phone-screen">
+            <div class="phone-top"><span>9:41</span><span>Example</span></div>
+            <p class="phone-hello">Today</p>
+            <p class="phone-kcal">1,240<span>kcal</span></p>
+            <div class="phone-macros">
+              <div><b>86g</b><span>protein</span></div>
+              <div><b>120g</b><span>carbs</span></div>
+              <div><b>41g</b><span>fat</span></div>
+            </div>
+            <div class="meal"><i class="a"></i><div><b>Chicken breast</b><span>320 kcal</span></div></div>
+            <div class="meal"><i class="b"></i><div><b>Salad and rice</b><span>410 kcal</span></div></div>
+            <div class="meal"><i class="c"></i><div><b>Yogurt</b><span>150 kcal</span></div></div>
           </div>
         </div>
-        <div class="hp" aria-hidden="true">
-          <label for="website">Website</label>
-          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
-        </div>
-        <input name="source" type="hidden" value="" />
-      </form>
+      </section>
+      <section class="land-points">
+        <ul>
+          <li>An estimate from a photo, not a long form</li>
+          <li>Calories, protein, carbs, and fat</li>
+          <li>Water, workouts, and progress next to meals</li>
+          <li>iPhone and Android, after approval</li>
+        </ul>
+      </section>
+      <section class="land-steps">
+        <p class="land-kicker">How it works</p>
+        <h2>Three steps. Then you eat.</h2>
+        <ol>
+          <li>
+            <strong>Take the photo</strong>
+            <span>One picture of the plate. You don't search for every ingredient.</span>
+          </li>
+          <li>
+            <strong>See the estimate</strong>
+            <span>Calories and macros, so you know what the meal adds up to.</span>
+          </li>
+          <li>
+            <strong>Keep the day</strong>
+            <span>Meals, water, workouts, and progress stay together.</span>
+          </li>
+        </ol>
+      </section>
     </main>
-    <footer class="site-footer">
-      <div class="wrap">
-        <p>VeraLens · CalFoto AI</p>
-        <p><a href="../terms.html">Terms of Use</a> · <a href="../privacy.html">Privacy Policy</a></p>
-        <p><a href="mailto:contact.veralens@gmail.com">contact.veralens@gmail.com</a></p>
-      </div>
+    <footer class="land-foot">
+      <p>VeraLens · CalFoto AI</p>
+      <p>
+        <a href="../terms.html">Terms</a>
+        ·
+        <a href="../privacy.html">Privacy</a>
+        ·
+        <a href="../support.html">Support</a>
+        ·
+        <a href="../contact.html">Contact</a>
+      </p>
+      <p><a href="mailto:contact.veralens@gmail.com">contact.veralens@gmail.com</a></p>
     </footer>
-    <script src="../waitlist.js?v=1"></script>
+    <script src="../waitlist.js?v=2"></script>
   </body>
 </html>

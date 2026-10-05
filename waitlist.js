@@ -45,13 +45,6 @@
   var sourceInput = form.querySelector("[name=source]");
   if (sourceInput && source) sourceInput.value = source;
 
-  submit.disabled = true;
-  submit.classList.add("is-waiting");
-  window.setTimeout(function () {
-    submit.disabled = false;
-    submit.classList.remove("is-waiting");
-  }, 2000);
-
   function show(message, ok) {
     banner.hidden = false;
     banner.className = ok ? "sent-banner" : "error-banner";

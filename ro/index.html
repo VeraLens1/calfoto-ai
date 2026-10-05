@@ -6,93 +6,112 @@
     <title>CalFoto AI — listă de așteptare</title>
     <meta
       name="description"
-      content="Înscrie-te ca să afli când CalFoto AI este disponibil pe App Store și Google Play. Anunțul pleacă în română."
+      content="Fotografiază farfuria și află caloriile. Înscrie-te ca să afli când CalFoto AI este pe App Store și Google Play."
     />
     <link rel="canonical" href="https://veralens1.github.io/calfoto-ai/ro/" />
     <link rel="alternate" hreflang="ro" href="https://veralens1.github.io/calfoto-ai/ro/" />
     <link rel="alternate" hreflang="en" href="https://veralens1.github.io/calfoto-ai/en/" />
-    <link rel="stylesheet" href="../styles.css?v=9" />
+    <link rel="stylesheet" href="../styles.css?v=11" />
   </head>
-  <body>
-    <div class="wrap">
-      <header class="site-header">
-        <a class="brand" href="./">CalFoto AI</a>
-        <nav>
-          <a href="../terms.html">Termeni</a>
-          <a href="../privacy.html">Confidențialitate</a>
-          <a href="../support.html">Suport</a>
-          <a href="../contact.html">Contact</a>
-          <a href="../en/" data-lang-switch hreflang="en">EN</a>
-        </nav>
-      </header>
-    </div>
-    <main class="wrap">
-      <section class="hero">
-        <p class="status-pill">În aprobare pe App Store și Google Play</p>
-        <h1>CalFoto AI</h1>
-        <p>
-          Estimezi caloriile dintr-o poză. Ții evidența meselor, antrenamentelor și progresului.
-          Înscrierea nu îți face cont în aplicație.
-        </p>
-      </section>
-
-      <div class="cards">
-        <div class="card">
-          <strong>Poză</strong>
-          <span>Calorii estimate din farfurie.</span>
-        </div>
-        <div class="card">
-          <strong>Jurnal</strong>
-          <span>Mese, apă și progres.</span>
-        </div>
-        <div class="card">
-          <strong>Mișcare</strong>
-          <span>Antrenamente lângă ce ai mâncat.</span>
-        </div>
+  <body class="landing">
+    <header class="land-bar">
+      <a class="land-logo" href="./">CalFoto AI</a>
+      <div class="land-bar-actions">
+        <a class="land-lang" href="../en/" data-lang-switch hreflang="en">EN</a>
+        <a class="land-bar-btn" href="#join">Anunță-mă</a>
       </div>
-
-      <form class="contact-form waitlist-form" data-waitlist data-locale="ro" novalidate>
-        <div data-banner role="status" hidden></div>
-        <div class="contact-grid">
-          <div class="field">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" autocomplete="email" required maxlength="254" />
-          </div>
-          <div class="field">
-            <label for="first_name">Prenume <span class="optional">(opțional)</span></label>
-            <input id="first_name" name="first_name" type="text" autocomplete="given-name" maxlength="80" />
-          </div>
-          <div class="field field-full">
-            <label class="consent">
+    </header>
+    <main>
+      <section class="land-hero">
+        <div class="land-copy">
+          <p class="land-eyebrow">În aprobare pe App Store și Google Play</p>
+          <h1>Caloriile din farfurie, dintr-o poză.</h1>
+          <p class="land-lead">
+            Fotografiezi masa și vezi caloriile, proteinele, carbohidrații și grăsimile.
+            Ții și apa, antrenamentele și progresul în același loc.
+          </p>
+          <form id="join" class="land-form" data-waitlist data-locale="ro" novalidate>
+            <div data-banner role="status" hidden></div>
+            <div class="land-join">
+              <label class="sr-only" for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="Emailul tău" />
+              <button type="submit">Anunță-mă</button>
+            </div>
+            <label class="land-name" for="first_name">
+              <span>Prenume <em>opțional</em></span>
+              <input id="first_name" name="first_name" type="text" autocomplete="given-name" maxlength="80" />
+            </label>
+            <label class="land-consent">
               <input name="consent" type="checkbox" required />
               <span>
-                Sunt de acord să primesc un singur anunț de lansare, în română, la această adresă.
+                Sunt de acord să primesc un singur anunț de lansare, în română.
                 Am citit <a href="../privacy.html">Politica de confidențialitate</a>.
               </span>
             </label>
-          </div>
-          <div class="field field-full">
-            <button class="contact-submit" type="submit">Anunță-mă</button>
-            <p class="form-note">
-              Un singur mesaj, când aplicația este gata. Pentru ștergerea adresei scrie la
-              <a href="mailto:contact.veralens@gmail.com">contact.veralens@gmail.com</a>.
-            </p>
+            <p class="land-note">Înscrierea nu îți face cont. Pentru ștergere, scrie la contact.veralens@gmail.com.</p>
+            <div class="hp" aria-hidden="true">
+              <label for="website">Website</label>
+              <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+            </div>
+            <input name="source" type="hidden" value="" />
+          </form>
+        </div>
+        <div class="phone" aria-hidden="true">
+          <div class="phone-screen">
+            <div class="phone-top"><span>9:41</span><span>Exemplu</span></div>
+            <p class="phone-hello">Astăzi</p>
+            <p class="phone-kcal">1.240<span>kcal</span></p>
+            <div class="phone-macros">
+              <div><b>86g</b><span>proteine</span></div>
+              <div><b>120g</b><span>carbo</span></div>
+              <div><b>41g</b><span>grăsimi</span></div>
+            </div>
+            <div class="meal"><i class="a"></i><div><b>Piept de pui</b><span>320 kcal</span></div></div>
+            <div class="meal"><i class="b"></i><div><b>Salată și orez</b><span>410 kcal</span></div></div>
+            <div class="meal"><i class="c"></i><div><b>Iaurt</b><span>150 kcal</span></div></div>
           </div>
         </div>
-        <div class="hp" aria-hidden="true">
-          <label for="website">Website</label>
-          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
-        </div>
-        <input name="source" type="hidden" value="" />
-      </form>
+      </section>
+      <section class="land-points">
+        <ul>
+          <li>Estimare dintr-o poză, nu dintr-un formular lung</li>
+          <li>Calorii, proteine, carbohidrați și grăsimi</li>
+          <li>Apă, antrenamente și progres, lângă mese</li>
+          <li>iPhone și Android, după aprobare</li>
+        </ul>
+      </section>
+      <section class="land-steps">
+        <p class="land-kicker">Cum funcționează</p>
+        <h2>Trei pași. Apoi mănânci.</h2>
+        <ol>
+          <li>
+            <strong>Fotografiezi</strong>
+            <span>O poză a farfuriei. Nu cauți fiecare ingredient de mână.</span>
+          </li>
+          <li>
+            <strong>Vezi estimarea</strong>
+            <span>Calorii și macronutrienți, ca să știi cu ce rămâi din masă.</span>
+          </li>
+          <li>
+            <strong>Ții ziua</strong>
+            <span>Mesele, apa, antrenamentele și progresul stau în același loc.</span>
+          </li>
+        </ol>
+      </section>
     </main>
-    <footer class="site-footer">
-      <div class="wrap">
-        <p>VeraLens · CalFoto AI</p>
-        <p><a href="../terms.html">Termeni</a> · <a href="../privacy.html">Confidențialitate</a></p>
-        <p><a href="mailto:contact.veralens@gmail.com">contact.veralens@gmail.com</a></p>
-      </div>
+    <footer class="land-foot">
+      <p>VeraLens · CalFoto AI</p>
+      <p>
+        <a href="../terms.html">Termeni</a>
+        ·
+        <a href="../privacy.html">Confidențialitate</a>
+        ·
+        <a href="../support.html">Suport</a>
+        ·
+        <a href="../contact.html">Contact</a>
+      </p>
+      <p><a href="mailto:contact.veralens@gmail.com">contact.veralens@gmail.com</a></p>
     </footer>
-    <script src="../waitlist.js?v=1"></script>
+    <script src="../waitlist.js?v=2"></script>
   </body>
 </html>
